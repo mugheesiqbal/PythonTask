@@ -41,9 +41,22 @@
 # result=reduce(lambda x,y:x+y,numbers)
 # print(result)
 #remove Odd number
-num=[1,2,3,4,5,6]
-res=list(filter(lambda x:x%2==0,num))
-print(res)
-#Square The Number
-res=list(map(lambda x:x**2,res))
-print(res)
+# num=[1,2,3,4,5,6]
+# res=list(filter(lambda x:x%2==0,num))
+# print(res)
+# #Square The Number
+# res=list(map(lambda x:x**2,res))
+# print(res)
+
+#Time Complexity Task
+#basicaly set is best approach to store a unique value and other side time complexity nested loops and mush more taks time
+student=["Mughees","Mohsan","Zafar","Azhar","Ahsan","Ashar","Mohsan","Mughees"]
+login=set()
+signin=set()
+for user in student:
+    if user in signin:
+        login.add(user)
+    else:
+        signin.add(user)
+print(login)
+print(signin)
