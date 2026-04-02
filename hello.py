@@ -50,13 +50,86 @@
 
 #Time Complexity Task
 #basicaly set is best approach to store a unique value and other side time complexity nested loops and mush more taks time
-student=["Mughees","Mohsan","Zafar","Azhar","Ahsan","Ashar","Mohsan","Mughees"]
-login=set()
-signin=set()
-for user in student:
-    if user in signin:
-        login.add(user)
-    else:
-        signin.add(user)
-print(login)
-print(signin)
+# student=["Mughees","Mohsan","Zafar","Azhar","Ahsan","Ashar","Mohsan","Mughees"]
+# login=set()
+# signin=set()
+# for user in student:
+#     if user in signin:
+#         login.add(user)
+#     else:
+#         signin.add(user)
+# print(login)
+# print(signin)
+
+#Day $ File HAndlinf +Json
+
+import json
+
+def save_config(data):
+    with open("config.json","w") as file:
+        json.dump(data,file,indent=4)
+def load_config():
+    try:
+        with open("config.json","r") as file:
+            return json.load(file)
+    except FileNotFoundError:
+        return {}
+def update_config(key,value):
+    data=load_config()
+    print(data)
+    data[key]=value
+    save_config(data)
+    print(f"{key},update!")
+def delete_config(key):
+        data=load_config()
+        if key in data:
+            del data[key]
+            save_config()
+            print(f"{key},deleted!")
+        else:
+                print("key did not found")
+update_config("dark","Theme")
+update_config("value",18)
+print("current Config",load_config())
+delete_config("volume")
+print("after delete",load_config())
+
+
+# import json
+
+# def save_config(data):
+#     with open("config.json", "w") as file:
+#         json.dump(data, file, indent=4)
+
+# def load_config():
+#     try:
+#         with open("config.json", "r") as file:
+#             return json.load(file)
+#     except FileNotFoundError:
+#         return {}
+
+# def update_config(key, value):
+#     data = load_config()
+#     data[key] = value
+#     save_config(data)
+#     print(f"{key} updated!")
+
+# def delete_config(key):
+#     data = load_config()
+    
+#     if key in data:
+#         del data[key]
+#         save_config(data)
+#         print(f"{key} deleted!")
+#     else:
+#         print("Key not found")
+
+# # -------- TEST --------
+# update_config("theme", "dark")
+# update_config("volume", 80)
+
+# print("Current Config:", load_config())
+
+# delete_config("volume")
+
+# print("After Delete:", load_config())
