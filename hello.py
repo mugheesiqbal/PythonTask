@@ -63,36 +63,36 @@
 
 #Day $ File HAndlinf +Json
 
-import json
+# import json
 
-def save_config(data):
-    with open("config.json","w") as file:
-        json.dump(data,file,indent=4)
-def load_config():
-    try:
-        with open("config.json","r") as file:
-            return json.load(file)
-    except FileNotFoundError:
-        return {}
-def update_config(key,value):
-    data=load_config()
-    print(data)
-    data[key]=value
-    save_config(data)
-    print(f"{key},update!")
-def delete_config(key):
-        data=load_config()
-        if key in data:
-            del data[key]
-            save_config()
-            print(f"{key},deleted!")
-        else:
-                print("key did not found")
-update_config("dark","Theme")
-update_config("value",18)
-print("current Config",load_config())
-delete_config("volume")
-print("after delete",load_config())
+# def save_config(data):
+#     with open("config.json","w") as file:
+#         json.dump(data,file,indent=4)
+# def load_config():
+#     try:
+#         with open("config.json","r") as file:
+#             return json.load(file)
+#     except FileNotFoundError:
+#         return {}
+# def update_config(key,value):
+#     data=load_config()
+#     print(data)
+#     data[key]=value
+#     save_config(data)
+#     print(f"{key},update!")
+# def delete_config(key):
+#         data=load_config()
+#         if key in data:
+#             del data[key]
+#             save_config()
+#             print(f"{key},deleted!")
+#         else:
+#                 print("key did not found")
+# update_config("dark","Theme")
+# update_config("value",18)
+# print("current Config",load_config())
+# delete_config("volume")
+# print("after delete",load_config())
 
 
 # import json
@@ -133,3 +133,36 @@ print("after delete",load_config())
 # delete_config("volume")
 
 # print("After Delete:", load_config())
+
+#Day 5 Task Exception handeling
+
+class invalidOperatorError:
+    pass
+while True:
+    try:
+        num1=float(input("Enter a num "))
+        operator=(input("Enter a Operatore (+,-,*,/ )" ))
+        num2=float(input("Enter a num "))
+        if operator=="+":
+            print("Result",num1+num2)
+        elif operator=="-":
+            print("Result",num1-num2)
+        elif operator=="*":
+            print("Result",num1*num2)
+        elif operator=="/":
+            print("Result",num1/num2)
+        else:
+            raise invalidOperatorError ("Operatore not supported")
+    except ValueError:
+        print("Inavlid Error")
+    except ZeroDivisionError:
+        print("Cannot Divide by Zero ")
+    except invalidOperatorError as e:
+        print("X",e)
+    except Exception as e:
+        print("Unexpected Error",e)
+    
+    again=input("Continue ? (y/n)")
+    if again.lower() !='y':
+        break
+    print("Debug",num1,operator,num2) 
