@@ -136,33 +136,72 @@
 
 #Day 5 Task Exception handeling
 
-class invalidOperatorError:
-    pass
-while True:
-    try:
-        num1=float(input("Enter a num "))
-        operator=(input("Enter a Operatore (+,-,*,/ )" ))
-        num2=float(input("Enter a num "))
-        if operator=="+":
-            print("Result",num1+num2)
-        elif operator=="-":
-            print("Result",num1-num2)
-        elif operator=="*":
-            print("Result",num1*num2)
-        elif operator=="/":
-            print("Result",num1/num2)
-        else:
-            raise invalidOperatorError ("Operatore not supported")
-    except ValueError:
-        print("Inavlid Error")
-    except ZeroDivisionError:
-        print("Cannot Divide by Zero ")
-    except invalidOperatorError as e:
-        print("X",e)
-    except Exception as e:
-        print("Unexpected Error",e)
+# class invalidOperatorError:
+#     pass
+# while True:
+#     try:
+#         num1=float(input("Enter a num "))
+#         operator=(input("Enter a Operatore (+,-,*,/ )" ))
+#         num2=float(input("Enter a num "))
+#         if operator=="+":
+#             print("Result",num1+num2)
+#         elif operator=="-":
+#             print("Result",num1-num2)
+#         elif operator=="*":
+#             print("Result",num1*num2)
+#         elif operator=="/":
+#             print("Result",num1/num2)
+#         else:
+#             raise invalidOperatorError ("Operatore not supported")
+#     except ValueError:
+#         print("Inavlid Error")
+#     except ZeroDivisionError:
+#         print("Cannot Divide by Zero ")
+#     except invalidOperatorError as e:
+#         print("X",e)
+#     except Exception as e:
+#         print("Unexpected Error",e)
     
-    again=input("Continue ? (y/n)")
-    if again.lower() !='y':
-        break
-    print("Debug",num1,operator,num2) 
+#     again=input("Continue ? (y/n)")
+#     if again.lower() !='y':
+#         break
+#     print("Debug",num1,operator,num2) 
+
+#practise question OOp Concept
+
+class Student:
+    def __init__(self,name,math,phys,ch):
+        self.name=name
+        self.math=math
+        self.phys=phys
+        self.ch=ch
+        
+    def avg_marks(self):
+        sum=0
+        for val in self.math,self.ch,self.phys:
+            sum=sum+val
+        print ("Total avg Of  Marks",self.name ,"is",sum/3)
+    
+s1=Student("Mughees",78,43,65)
+s1.avg_marks()
+
+#practise Question 2
+class Account:
+    def __init__(self,balance,account_no):
+        self.balance=balance
+        self.account_no=account_no
+    def debit(self,amount):
+        self.balance-=amount
+        print("account Debit",amount)
+        print("total balcnce",self.get_balance())
+    def credit(self,amount):
+        self.balance+=amount
+        print("Credit",amount)
+        print("total balcnce",self.get_balance())
+    def get_balance(self):
+        return self.balance
+
+acc1=Account(5000,133)
+acc1.debit(200)
+print(acc1.balance)
+acc1.credit(300)
