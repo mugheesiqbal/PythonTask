@@ -169,39 +169,82 @@
 
 #practise question OOp Concept
 
-class Student:
-    def __init__(self,name,math,phys,ch):
-        self.name=name
-        self.math=math
-        self.phys=phys
-        self.ch=ch
+# class Student:
+#     def __init__(self,name,math,phys,ch):
+#         self.name=name
+#         self.math=math
+#         self.phys=phys
+#         self.ch=ch
         
-    def avg_marks(self):
-        sum=0
-        for val in self.math,self.ch,self.phys:
-            sum=sum+val
-        print ("Total avg Of  Marks",self.name ,"is",sum/3)
+#     def avg_marks(self):
+#         sum=0
+#         for val in self.math,self.ch,self.phys:
+#             sum=sum+val
+#         print ("Total avg Of  Marks",self.name ,"is",sum/3)
     
-s1=Student("Mughees",78,43,65)
-s1.avg_marks()
+# s1=Student("Mughees",78,43,65)
+# s1.avg_marks()
 
 #practise Question 2
-class Account:
-    def __init__(self,balance,account_no):
-        self.balance=balance
-        self.account_no=account_no
-    def debit(self,amount):
-        self.balance-=amount
-        print("account Debit",amount)
-        print("total balcnce",self.get_balance())
-    def credit(self,amount):
-        self.balance+=amount
-        print("Credit",amount)
-        print("total balcnce",self.get_balance())
-    def get_balance(self):
-        return self.balance
+# class Account:
+#     def __init__(self,balance,account_no):
+#         self.balance=balance
+#         self.account_no=account_no
+#     def debit(self,amount):
+#         self.balance-=amount
+#         print("account Debit",amount)
+#         print("total balcnce",self.get_balance())
+#     def credit(self,amount):
+#         self.balance+=amount
+#         print("Credit",amount)
+#         print("total balcnce",self.get_balance())
+#     def get_balance(self):
+#         return self.balance
 
-acc1=Account(5000,133)
-acc1.debit(200)
-print(acc1.balance)
-acc1.credit(300)
+# acc1=Account(5000,133)
+# acc1.debit(200)
+# print(acc1.balance)
+# acc1.credit(300)
+
+#Task OOP 
+
+class User:
+    def __init__(self,name,email):
+        self.name=name
+        self.email=email
+    def display(self):
+        print(f"Email: {self.email}  Name: {self.name}")
+class Student(User):
+    def __init__(self, name, email,student_id):
+        super().__init__(name, email)
+        self.student_id=student_id
+    def display(self):
+        super().display()
+        print(f"Student Id:  {self.student_id}")
+class HostelStudent(Student):
+    def __init__(self, name, email, student_id,fees=0,room_no=None):
+        super().__init__(name, email, student_id)
+        self.fees=fees
+        self.room_no=room_no
+    def assign_room(self,room_no):
+        self.room_no=room_no
+        print(f" Assign Room {room_no} assign to {self.name}")
+    def calculate_fee(self):
+        return self.fees+1000
+    def display(self):
+        super().display()
+        print(f"Room:  {self.room_no} fees {self.fees}")
+    def __str__(self):
+        return (f" Room :{self.room_no} Fees:{self.fees} Name {self.name}")
+s1=HostelStudent("Mugheees","mugheesiqbal388@gmail.com","ST-101",500,121)
+s2=HostelStudent("Mohsan","mohsaniqbal388@gmail.com","ST-102",10000,122)
+s1.assign_room(12)
+s1.student_id="ST-102"
+s1.fees=1000
+s2.assign_room(34)
+s1.display()
+s2.display()
+s1.calculate_fee()
+print(s1)
+print(s2)
+print(s1.student_id)
